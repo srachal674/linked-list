@@ -5,7 +5,8 @@ class LinkedListNode
         @value = value
         @next_node = next_node
     end
-
+end
+#--------program starts------
     def print_values(list_node)
         if list_node
             print "#{list_node.value} --> "
@@ -16,10 +17,15 @@ class LinkedListNode
         end
     end
 
+
 node1 = LinkedListNode.new(6)
 node2 = LinkedListNode.new(12, node1)
 node3 = LinkedListNode.new(74, node2)
 
 print_values(node3)
 
-end
+puts "------"
+
+revlist = reverse_list(node3)
+
+print_values(revlist)
