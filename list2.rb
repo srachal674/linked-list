@@ -1,39 +1,36 @@
 class LinkedListNode
-    attr_accessor :value, :next_node
-  
-    def initialize(value, next_node=nil)
-      @value = value
-      @next_node = next_node
-    end
+  attr_accessor :value, :next_node
+
+  def initialize(value, next_node=nil)
+    @value = value
+    @next_node = next_node
   end
+end
   
-  class Stack
-    attr_reader :data
+# class Stack
+#   attr_reader :data
   
-    def initialize
-      @data = nil
-    end
+#   def initialize
+#     @data = nil
+#   end
   
-    def push(value)
-      @data = LinkedListNode.new(value, @data)
-    end
+#   def push(value)
+#     @data = LinkedListNode.new(value, @data)
+#   end
   
-    def pop
-      return print "nil\n" if @data.nil?
-      print "#{@data.value}\n"
-      @data = @data.next_node
-    end
+#   def pop
+#     return print "nil\n" if @data.nil?
+#     print "#{@data.value}\n"
+#     @data = @data.next_node
+#   end
   
-  end
   
   def reverse_list(list, previous=nil)
-    stack = Stack.new
-    while list
-      stack.push(list.value)
-      list = list.next_node
+    if list
+      next_node = list.next_node
+      list.next_node = previous
+      reverse_list(next_node, list)
     end
-  
-    return stack.data
   end
   
   def print_values(list_node)
@@ -51,6 +48,7 @@ class LinkedListNode
   node3 = LinkedListNode.new(74, node2)
   node4 = LinkedListNode.new(20, node3)
   node5 = LinkedListNode.new(79, node4)
+ 
   
   
   print_values(node5)
